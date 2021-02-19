@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TestApp</string>
+    <string name="dayscounter">Дней: 365 </string>
+    <string name="target">Цель: 365 дней</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <attr name="com.example.testapp2.MultiMonthView" format="string" /><!--you MonthView.class path-->
+
+</resources>
