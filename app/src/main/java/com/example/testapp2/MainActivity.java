@@ -12,33 +12,30 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mlistener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment selectedFragment = null;
-            switch (item.getItemId()){
-                case R.id.main:
-                    selectedFragment = new FragmentCounter();
-                    break;
-                case R.id.inform:
-                    selectedFragment = new InformationFragment();
-                    break;
-                case R.id.calendar:
-                    selectedFragment = new FragmentCalendar();
-                    break;
-                case R.id.settings:
-                    selectedFragment = new FragmentSettings();
-                    break;
-                case R.id.diary:
-                    selectedFragment = new FragmentDiary();
-                    break;
-            }
-            FragmentTransaction transaction = getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment, selectedFragment);
-            transaction.commit();
-            return true;
+    private BottomNavigationView.OnNavigationItemSelectedListener mlistener = item -> {
+        Fragment selectedFragment = null;
+        switch (item.getItemId()){
+            case R.id.main:
+                selectedFragment = new FragmentCounter();
+                break;
+            case R.id.inform:
+                selectedFragment = new InformationFragment();
+                break;
+            case R.id.calendar:
+                selectedFragment = new CalendarFragment();
+                break;
+            case R.id.settings:
+                selectedFragment = new FragmentSettings();
+                break;
+            case R.id.diary:
+                selectedFragment = new FragmentDiary();
+                break;
         }
+        FragmentTransaction transaction = getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment, selectedFragment);
+        transaction.commit();
+        return true;
     };
 
     @Override
@@ -49,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
        if(savedInstanceState == null)
            getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new FragmentCounter()).commit();
 
-       BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navbar);
+       BottomNavigationView navigation = findViewById(R.id.navbar);
        navigation.setOnNavigationItemSelectedListener(mlistener);
     }
 }

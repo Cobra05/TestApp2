@@ -100,18 +100,8 @@ public class FragmentCounter extends Fragment {
             builder
                     .setTitle("Установка даты начала")
                     .setMessage("Установите дату начала воздержания.")
-                    .setPositiveButton("Установить", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            setStartDate();
-                        }
-                    })
-                    .setNeutralButton("Установить сегодняшний день", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            currentDate();
-                        }
-                    })
+                    .setPositiveButton("Установить", (dialog, which) -> setStartDate())
+                    .setNeutralButton("Установить сегодняшний день", (dialog, which) -> currentDate())
                     .setCancelable(false)
                     .create();
 
@@ -120,18 +110,8 @@ public class FragmentCounter extends Fragment {
             builder
                     .setTitle("Установка даты начала")
                     .setMessage("Установите дату начала воздержания.")
-                    .setPositiveButton("Установить", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            setStartDate();
-                        }
-                    })
-                    .setNeutralButton("Установить сегодняшний день", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            currentDate();
-                        }
-                    })
+                    .setPositiveButton("Установить", (dialog, which) -> setStartDate())
+                    .setNeutralButton("Установить сегодняшний день", (dialog, which) -> currentDate())
                     .setCancelable(false)
                     .create().show();
 
@@ -142,9 +122,9 @@ public class FragmentCounter extends Fragment {
 
     public void updateDays(){
         sPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        long starttimeinmills = sPref.getLong(START_DATE, (long) 0.1);
+        long starttimeinmills = sPref.getLong(START_DATE, 0);
 
-        if(starttimeinmills == 0.0){
+        if(starttimeinmills == 0){
             daysCount = 0.1f;
             createDialog(3);
 
@@ -307,12 +287,8 @@ public class FragmentCounter extends Fragment {
             }
         });
         TextView citlab = view.findViewById(R.id.citateslab);
-        citlab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                updateCitate(v);
-            }
-        });
+
+        citlab.setOnClickListener(this::updateCitate);
 
 
 
