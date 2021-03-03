@@ -3,9 +3,14 @@ package com.example.testapp2;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import android.view.View;
+
 import android.os.Bundle;
 
+import com.example.testapp2.fragments.FragmentCalendar;
+import com.example.testapp2.fragments.FragmentCounter;
+import com.example.testapp2.fragments.FragmentDiary;
+import com.example.testapp2.fragments.FragmentSettings;
+import com.example.testapp2.fragments.FragmentInformation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
                 selectedFragment = new FragmentCounter();
                 break;
             case R.id.inform:
-                selectedFragment = new InformationFragment();
+                selectedFragment = new FragmentInformation();
                 break;
             case R.id.calendar:
-                selectedFragment = new CalendarFragment();
+                selectedFragment = new FragmentCalendar();
                 break;
             case R.id.settings:
                 selectedFragment = new FragmentSettings();
