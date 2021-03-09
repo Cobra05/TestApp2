@@ -98,9 +98,86 @@ public class WebView extends AppCompatActivity {
                 case "m26":
                     webView.loadUrl("file:///android_asset/methods/m26.html");
                     break;
+                case "m30":
+                    webView.loadUrl("file:///android_asset/methods/m30.html");
+                    break;
+                case "m31":
+                    webView.loadUrl("file:///android_asset/methods/m31.html");
+                    break;
+                case "m32":
+                    webView.loadUrl("file:///android_asset/methods/m32.html");
+                    break;
+                case "m33":
+                    webView.loadUrl("file:///android_asset/methods/m33.html");
+                    break;
+                case "m34":
+                    webView.loadUrl("file:///android_asset/methods/m34.html");
+                    break;
+                case "m35":
+                    webView.loadUrl("file:///android_asset/methods/m35.html");
+                    break;
+                case "m40":
+                    webView.loadUrl("file:///android_asset/methods/m40.html");
+                    break;
+                case "m41":
+                    webView.loadUrl("file:///android_asset/methods/m41.html");
+                    break;
+                case "m42":
+                    webView.loadUrl("file:///android_asset/methods/m42.html");
+                    break;
+                case "m43":
+                    webView.loadUrl("file:///android_asset/methods/m43.html");
+                    break;
+                case "m44":
+                    webView.loadUrl("file:///android_asset/methods/m44.html");
+                    break;
+                case "m50":
+                    webView.loadUrl("file:///android_asset/methods/m50.html");
+                    break;
+                case "m51":
+                    webView.loadUrl("file:///android_asset/methods/m51.html");
+                    break;
+                case "m52":
+                    webView.loadUrl("file:///android_asset/methods/m52.html");
+                    break;
+                case "m53":
+                    webView.loadUrl("file:///android_asset/methods/m53.html");
+                    break;
+                case "m54":
+                    webView.loadUrl("file:///android_asset/methods/m54.html");
+                    break;
+                case "m60":
+                    webView.loadUrl("file:///android_asset/methods/m60.html");
+                    break;
+                case "m61":
+                    webView.loadUrl("file:///android_asset/methods/m61.html");
+                    break;
+                case "m62":
+                    webView.loadUrl("file:///android_asset/methods/m62.html");
+                    break;
+                case "m63":
+                    webView.loadUrl("file:///android_asset/methods/m63.html");
+                    break;
+                case "m64":
+                    webView.loadUrl("file:///android_asset/methods/m64.html");
+                    break;
+                case "m65":
+                    webView.loadUrl("file:///android_asset/methods/m65.html");
+                    break;
+                case "m66":
+                    webView.loadUrl("file:///android_asset/methods/m66.html");
+                    break;
+                case "m70":
+                    webView.loadUrl("file:///android_asset/methods/m70.html");
+                    break;
+                case "m71":
+                    webView.loadUrl("file:///android_asset/methods/m71.html");
+                    break;
+                case "m72":
+                    webView.loadUrl("file:///android_asset/methods/m72.html");
+                    break;
 
             }
-
         }
 
 
