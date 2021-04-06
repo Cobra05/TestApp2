@@ -11,6 +11,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 public class WebView extends AppCompatActivity {
 
     android.webkit.WebView webView;
@@ -180,13 +182,76 @@ public class WebView extends AppCompatActivity {
             }
         }
 
+        @Nullable String type = extras.getString("type");
+        if (type != null) {
+            int id = extras.getInt("id");
+            if (type.equals("vred")){
+                switch (id) {
+                    case 0:
+                        webView.loadUrl("file:///android_asset/information/vred/v0.html");
+                        break;
+                    case 1:
+                        webView.loadUrl("file:///android_asset/information/vred/v1.html");
+                        break;
+                    case 2:
+                        webView.loadUrl("file:///android_asset/information/vred/v2.html");
+                        break;
+                    case 3:
+                        webView.loadUrl("file:///android_asset/information/vred/v3.html");
+                        break;
+                    case 4:
+                        webView.loadUrl("file:///android_asset/information/vred/v4.html");
+                        break;
+                    case 5:
+                        webView.loadUrl("file:///android_asset/information/vred/v5.html");
+                        break;
+                    case 6:
+                        webView.loadUrl("file:///android_asset/information/vred/v6.html");
+                        break;
+                    case 7:
+                        webView.loadUrl("file:///android_asset/information/vred/v7.html");
+                        break;
+                    case 8:
+                        webView.loadUrl("file:///android_asset/information/vred/v8.html");
+                        break;
+                    case 9:
+                        webView.loadUrl("file:///android_asset/information/vred/v9.html");
+                        break;
+                }
+            }else if(type.equals("polza")){
+                switch (id) {
+                    case 0:
+                        webView.loadUrl("file:///android_asset/information/polza/p0.html");
+                        break;
+                    case 1:
+                        webView.loadUrl("file:///android_asset/information/polza/p1.html");
+                        break;
+                    case 2:
+                        webView.loadUrl("file:///android_asset/information/polza/p2.html");
+                        break;
+                    case 3:
+                        webView.loadUrl("file:///android_asset/information/polza/p3.html");
+                        break;
+                    case 4:
+                        webView.loadUrl("file:///android_asset/information/polza/p4.html");
+                        break;
+                    case 5:
+                        webView.loadUrl("file:///android_asset/information/polza/p5.html");
+                        break;
+                    case 6:
+                        webView.loadUrl("file:///android_asset/information/polza/p6.html");
+                        break;
+                    case 7:
+                        webView.loadUrl("file:///android_asset/information/polza/p7.html");
+                        break;
+                }
+            }
+        }
 
 
 
 
-
-
-    }
+}
     @Override
     public void onBackPressed() {
         if(webView.canGoBack()) {

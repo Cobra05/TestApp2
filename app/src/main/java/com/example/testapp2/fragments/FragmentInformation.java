@@ -1,8 +1,6 @@
 package com.example.testapp2.fragments;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,10 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebResourceRequest;
-import android.webkit.WebViewClient;
 
 import com.example.testapp2.InformActivity;
+import com.example.testapp2.MethodsActivity;
 import com.example.testapp2.R;
 import com.example.testapp2.WebView;
 import com.example.testapp2.adapters.CategoryAdapter;
@@ -49,9 +46,25 @@ public class FragmentInformation extends Fragment {
         GridLayoutManager grd = new GridLayoutManager(view.getContext(), 2, LinearLayoutManager.VERTICAL, false);
         CategoryAdapter.OnStateClickListener stateClickListener = (category, position) -> {
             Intent webintent = new Intent(getActivity(), WebView.class);
+            Intent methods = new Intent(getActivity(), MethodsActivity.class);
             Intent inform = new Intent(getActivity(), InformActivity.class);
 
             switch (position){
+                case 0:
+                    inform.putExtra("category", "polza");
+                    startActivity(inform);
+                    break;
+                case 1:
+                    inform.putExtra("category", "vred");
+                    startActivity(inform);
+                    break;
+                case 2:
+                    startActivity(methods);
+                    break;
+                case 3:
+                    inform.putExtra("category", "sovet");
+                    startActivity(inform);
+                    break;
                 case 4:
                     webintent.putExtra("position", 4);
                     startActivity(webintent);
@@ -60,9 +73,8 @@ public class FragmentInformation extends Fragment {
                     webintent.putExtra("position", 5);
                     startActivity(webintent);
                     break;
-                case 2:
-                    startActivity(inform);
-                    break;
+
+
 
 
 
