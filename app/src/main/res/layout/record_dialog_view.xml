@@ -2,7 +2,7 @@
 <EditText xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/edit_dialog"
-    android:inputType="textMultiLine"
+    android:id="@+id/rec_edit_dialog"
+    android:inputType="number"
      />
 

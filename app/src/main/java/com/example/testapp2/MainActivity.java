@@ -12,6 +12,7 @@ import com.example.testapp2.fragments.FragmentDiary;
 import com.example.testapp2.fragments.FragmentSettings;
 import com.example.testapp2.fragments.FragmentInformation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme();
         setContentView(R.layout.activity_main);
 
        if(savedInstanceState == null)

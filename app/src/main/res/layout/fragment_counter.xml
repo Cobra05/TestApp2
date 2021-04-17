@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-
+    android:id="@+id/rel"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#FFFFFF"
+    android:background="?attr/backgroundColor"
     android:layout_height="match_parent"
     tools:context=".fragments.FragmentCounter"
-
-
     >
 
 
@@ -23,7 +21,7 @@
         app:cpb_background_progressbar_width="30dp"
         app:cpb_progress="1"
         app:cpb_progress_direction="to_right"
-        app:cpb_progressbar_color="#4DE847"
+        app:cpb_progressbar_color="?attr/motionProgress"
         app:cpb_progressbar_width="30dp"
         app:cpb_round_border="true"
         app:cpb_start_angle="7"/>
@@ -38,7 +36,7 @@
         app:cpb_background_progressbar_width="30dp"
         app:cpb_progress="3"
         app:cpb_progress_direction="to_right"
-        app:cpb_progressbar_color="#4DE847"
+        app:cpb_progressbar_color="?attr/motionProgress"
         app:cpb_progressbar_width="30dp"
         app:cpb_round_border="false"
         />
@@ -59,7 +57,7 @@
         app:cpb_background_progressbar_width="30dp"
         app:cpb_progress="1"
         app:cpb_progress_direction="to_right"
-        app:cpb_progressbar_color="#0079FB"
+        app:cpb_progressbar_color="?attr/haloColor"
         app:cpb_progressbar_width="30dp"
         app:cpb_round_border="true"
         app:cpb_start_angle="7"/>
@@ -79,9 +77,8 @@
         app:cpb_background_progressbar_color="#00DD5055"
         app:cpb_background_progressbar_width="-100dp"
         app:cpb_progress="3"
-
         app:cpb_progress_direction="to_right"
-        app:cpb_progressbar_color="#0079FB"
+        app:cpb_progressbar_color="?attr/haloColor"
         app:cpb_progressbar_width="30dp"
         app:cpb_round_border="false"
         />
@@ -109,7 +106,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/dayscounter"
         android:layout_alignParentStart="true"
-
         android:layout_alignParentEnd="true"
         android:layout_marginStart="105dp"
         android:layout_marginTop="10dp"
@@ -124,7 +120,6 @@
 
     <TextView
         android:id="@+id/targetlab"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/circularProgressBar"
@@ -134,24 +129,9 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="100dp"
         tools:text="@string/target"
-        android:textColor="#4DE847"
+        android:textColor="?attr/motionProgress"
         android:textSize="20sp"
         android:gravity="center"/>
-
-    <TextView
-        android:id="@+id/recDays2"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_below="@+id/targetlab"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="68dp"
-        android:layout_toEndOf="@+id/editTextNumber"
-        android:gravity="start|center"
-        android:text="дней."
-        android:textColor="#0079FB"
-        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/recDays"
@@ -159,44 +139,44 @@
         android:layout_height="48dp"
         android:layout_below="@+id/targetlab"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="68dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="0dp"
-        android:gravity="center|end"
-        android:text="Рекорд: "
-        android:textColor="#0079FB"
-        android:textSize="20sp" />
+        android:layout_marginEnd="80dp"
+        android:gravity="center"
+        tools:text="Рекорд: Нажмите чтобы установить"
+        android:textColor="?attr/haloColor"
+        android:textSize="20sp"
 
-    <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="65dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/targetlab"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_toEndOf="@+id/recDays"
-        android:focusableInTouchMode="true"
-        android:inputType="number"
-        android:text="0"
-        android:textSize="20sp" />
+        />
 
     <TextView
         android:id="@+id/citateslab"
         android:layout_width="wrap_content"
         android:layout_height="151dp"
 
-        android:layout_below="@+id/editTextNumber"
+        android:layout_below="@+id/recDays"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="3dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="3dp"
         android:background="@drawable/cit_block"
-        android:onClick="updateCitate"
         android:gravity="center"
+        android:onClick="updateCitate"
         android:text="@string/cit3"
         android:textColor="@color/black"
         android:textSize="17sp" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="69dp"
+        android:layout_height="76dp"
+        android:layout_below="@+id/circularProgressBar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/alarm" />
 
 
 </RelativeLayout>

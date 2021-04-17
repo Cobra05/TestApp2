@@ -3,8 +3,12 @@ package com.example.testapp2.fragments;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -17,11 +21,16 @@ import android.widget.TextView;
 import android.view.View;
 
 import com.example.testapp2.R;
+import com.example.testapp2.list_item.Notes;
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 import java.util.Calendar;
 import java.util.Random;
+import java.util.zip.Inflater;
+
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
+import org.w3c.dom.Text;
 
 
 public class FragmentCounter extends Fragment {
@@ -33,16 +42,16 @@ public class FragmentCounter extends Fragment {
     TextClock clock;
     Calendar currentDate = Calendar.getInstance();
     float daysCount;
-    float recdays;
     private int tDaysCount;
     final String START_DATE = "Start date";
-    final String MAX_DATE = "Maximum date";
+    final String MAX_DATE = "record";
     final Random random = new Random();
+
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -57,6 +66,42 @@ public class FragmentCounter extends Fragment {
 
 
 
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_counter, container, false);
+        clock = view.findViewById(R.id.textClock);
+
+        TextView citlab = view.findViewById(R.id.citateslab);
+        citlab.setOnClickListener(this::updateCitate);
+
+        TextView record = view.findViewById(R.id.recDays);
+        record.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("Установите рекорд");
+            View vi = inflater.inflate(R.layout.record_dialog_view, container, false);
+
+            builder.setView(vi);
+            EditText edt = vi.findViewById(R.id.rec_edit_dialog);
+            builder.setPositiveButton("Добавить", (dialog, which) ->{
+                SharedPreferences.Editor edt1 = sPref.edit();
+                String edta = String.valueOf(edt.getText());
+                int rec = Integer.parseInt(edta);
+                edt1.putInt(MAX_DATE, rec);
+                edt1.apply();
+                record.setText(String.format("Рекорд: %d дней", rec));
+                updateRecordPB();
+
+            })
+                    .setNegativeButton("Отмена", null);
+            builder.create().show();
+        });
+
+
+        return view;
     }
 
     public void currentDate(){
@@ -68,7 +113,6 @@ public class FragmentCounter extends Fragment {
         editor.commit();
         updateDays();
     }
-
     public void setStartDate(){
         Calendar dateAndTime = Calendar.getInstance();
 
@@ -138,8 +182,7 @@ public class FragmentCounter extends Fragment {
 
         days = getActivity().findViewById(R.id.dayscounter);
         days.setText("Дней: " + (int) daysCount);
-        }
-
+    }
     public void updateTarget(){
         TextView target = getActivity().findViewById(R.id.targetlab);
         tDaysCount = (int) daysCount;
@@ -160,7 +203,6 @@ public class FragmentCounter extends Fragment {
         }
 
     }
-
     public void updateCitate(){
         TextView citate = getActivity().findViewById(R.id.citateslab);
         int randcit = random.nextInt(11) +1;
@@ -195,7 +237,6 @@ public class FragmentCounter extends Fragment {
             default:citate.setText(R.string.cit3);
         }
     }
-
     public void updateTargetPB(){
         targetDays = getActivity().findViewById(R.id.circularProgressBar);
 
@@ -219,84 +260,19 @@ public class FragmentCounter extends Fragment {
 
 
     }
-
     public void updateRecordPB(){
         maximumDays = getActivity().findViewById(R.id.circularProgressBar2);
         sPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        float savedRecdate = sPref.getFloat(MAX_DATE, 30f);
-        EditText recCount = getActivity().findViewById(R.id.editTextNumber);
-        String sv = String.valueOf((int) savedRecdate);
-        recCount.setText(sv);
+        int savedRecdate = sPref.getInt(MAX_DATE, -1);
         maximumDays.setProgressMax(savedRecdate);
         maximumDays.setProgress(daysCount);
+        TextView record = getActivity().findViewById(R.id.recDays);
+        if (savedRecdate != -1){
+            record.setText(String.format("Рекорд: %d дней", savedRecdate));
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
-
-
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_counter, container, false);
-
-        EditText recCount = view.findViewById(R.id.editTextNumber);
-        clock = view.findViewById(R.id.textClock);
-        recCount.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                maximumDays = view.findViewById(R.id.circularProgressBar2);
-
-                try {
-                    recdays = Float.parseFloat(recCount.getText().toString());
-                    maximumDays.setProgressMax(recdays);
-                    maximumDays.setProgress(daysCount);
-
-
-                }catch (NumberFormatException e){
-                    maximumDays.setProgressMax(30);
-                    maximumDays.setProgress(daysCount);
-                }
-                sPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sPref.edit();
-                editor.putFloat(MAX_DATE, recdays);
-                editor.apply();
-                editor.commit();
-
-
-
-            }
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-        TextView citlab = view.findViewById(R.id.citateslab);
-
-        citlab.setOnClickListener(this::updateCitate);
-
-
-
-
-        return view;
     }
+
 
 
 }

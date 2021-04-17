@@ -9,4 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="main_color">#BFDCF8</color>
     <color name="bottom_navigation_item_background_colors">#000000</color>
+    <color name="targetPBcolor">#4DE847</color>
+    <color name="targetPBcolornight">#E61515</color>
+    <color name="recordPBcolor">#0079FB</color>
+    <color name="recordPBcolornight">#121AB8</color>
 </resources>

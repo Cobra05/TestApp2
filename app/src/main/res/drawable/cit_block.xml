@@ -11,6 +11,6 @@
         android:color="#1976D2">
     </stroke>
     <solid
-        android:color="@color/main_color">
+        android:color="?attr/customColorValue">
     </solid>
 </shape>
