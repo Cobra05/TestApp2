@@ -17,7 +17,6 @@ import android.widget.Toast;
 import com.example.testapp2.R;
 import com.savvi.rangedatepicker.CalendarPickerView;
 
-import java.sql.SQLInput;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -29,13 +28,15 @@ import java.util.Locale;
 public class FragmentCalendar extends Fragment {
 
     //lists for calendar
-    Collection<Date> highlited = new ArrayList<>();
+    Collection<Date> highlighted = new ArrayList<>();
     Collection<Date> selected = new ArrayList<>();
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_calendar2, container, false);
         CalendarPickerView calendar = view.findViewById(R.id.calendar_view);
@@ -45,10 +46,10 @@ public class FragmentCalendar extends Fragment {
 
 
 
+        SharedPreferences spref = getActivity().getPreferences(Context.MODE_PRIVATE);
 
         //get start of data vozderjaniya and current date to set on range picker and get all days between
         Calendar start = Calendar.getInstance();
-        SharedPreferences spref = getActivity().getPreferences(Context.MODE_PRIVATE);
         long start2 = spref.getLong("Start date", 0);
         start.setTimeInMillis(start2);
         selected.add(start.getTime());
@@ -65,7 +66,7 @@ public class FragmentCalendar extends Fragment {
             @Override
             public void onDateSelected(Date date){
                 if(cday.getTimeInMillis() < date.getTime()){
-                    Toast.makeText(getActivity(), "Будущее покрыто мраком", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Будущее еще не наступило!", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -75,10 +76,10 @@ public class FragmentCalendar extends Fragment {
                 cv.put("hdays", date.getTime());
 
                 if(cday.getTimeInMillis() < date.getTime()){
-                    Toast.makeText(getActivity(), "Будущее покрыто мраком", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Будущее еще не наступило!", Toast.LENGTH_SHORT).show();
                 }else {
-                highlited.add(date);
-                calendar.highlightDates(highlited);
+                highlighted.add(date);
+                calendar.highlightDates(highlighted);
                 addToBase(db, cv);
             }}
         });
@@ -96,7 +97,7 @@ public class FragmentCalendar extends Fragment {
         calendar.init(lastYear.getTime(), nextYear.getTime(), new SimpleDateFormat("MMMM, yyyy", Locale.getDefault()))
                 .inMode(CalendarPickerView.SelectionMode.MULTIPLE)
                 .withSelectedDates(selected2)
-                .withHighlightedDates(highlited);
+                .withHighlightedDates(highlighted);
         calendar.scrollToDate(new Date());
 
 
@@ -114,7 +115,7 @@ public class FragmentCalendar extends Fragment {
             long day = cur.getLong(0);
             Calendar cal = Calendar.getInstance();
             cal.setTimeInMillis(day);
-            highlited.add(cal.getTime());
+            highlighted.add(cal.getTime());
 
         }
         cur.close();

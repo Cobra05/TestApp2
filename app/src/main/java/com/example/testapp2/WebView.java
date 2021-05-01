@@ -9,9 +9,7 @@ import android.os.Bundle;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
-import java.util.Objects;
 
 public class WebView extends AppCompatActivity {
 

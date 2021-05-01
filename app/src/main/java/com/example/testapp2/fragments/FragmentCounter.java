@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import android.content.SharedPreferences;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextClock;
 import android.widget.TextView;
@@ -24,11 +26,13 @@ import com.example.testapp2.R;
 import com.example.testapp2.list_item.Notes;
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 import java.util.Calendar;
+import java.util.Objects;
 import java.util.Random;
 import java.util.zip.Inflater;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -43,8 +47,8 @@ public class FragmentCounter extends Fragment {
     Calendar currentDate = Calendar.getInstance();
     float daysCount;
     private int tDaysCount;
-    final String START_DATE = "Start date";
     final String MAX_DATE = "record";
+    final String START_DATE = "Start date";
     final Random random = new Random();
 
 
@@ -62,7 +66,7 @@ public class FragmentCounter extends Fragment {
         updateCitate();
         updateTargetPB();
         updateRecordPB();
-        createDialog(1);
+
 
 
 
@@ -80,15 +84,16 @@ public class FragmentCounter extends Fragment {
 
         TextView record = view.findViewById(R.id.recDays);
         record.setOnClickListener(v -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.Dialog);
             builder.setTitle("Установите рекорд");
             View vi = inflater.inflate(R.layout.record_dialog_view, container, false);
-
             builder.setView(vi);
             EditText edt = vi.findViewById(R.id.rec_edit_dialog);
             builder.setPositiveButton("Добавить", (dialog, which) ->{
                 SharedPreferences.Editor edt1 = sPref.edit();
                 String edta = String.valueOf(edt.getText());
+                if (Objects.equals(edta, ""))
+                    edta = "30";
                 int rec = Integer.parseInt(edta);
                 edt1.putInt(MAX_DATE, rec);
                 edt1.apply();
@@ -106,12 +111,11 @@ public class FragmentCounter extends Fragment {
 
     public void currentDate(){
         long starttimeinmills = Calendar.getInstance().getTimeInMillis();
-        sPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        sPref = getActivity().getSharedPreferences("Global", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sPref.edit();
         editor.putLong(START_DATE, starttimeinmills);
         editor.apply();
         editor.commit();
-        updateDays();
     }
     public void setStartDate(){
         Calendar dateAndTime = Calendar.getInstance();
@@ -122,57 +126,44 @@ public class FragmentCounter extends Fragment {
             dateAndTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
             long dateAndTimeinLong = dateAndTime.getTimeInMillis();
 
-            sPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+            sPref = getActivity().getSharedPreferences("Global", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sPref.edit();
             editor.putLong(START_DATE, dateAndTimeinLong);
             editor.apply();
-            editor.commit();
-            updateDays();
         };
 
 
-        new DatePickerDialog(getActivity(), d,
+        new DatePickerDialog(getActivity(), R.style.Dialog, d,
                 dateAndTime.get(Calendar.YEAR),
                 dateAndTime.get(Calendar.MONTH),
                 dateAndTime.get(Calendar.DAY_OF_MONTH))
                 .show();
-
-
     }
 
-    void createDialog(int id){
-        if(id == 1){
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder
+    void createDialog(){
+            AlertDialog alrt = new AlertDialog.Builder(getActivity(), R.style.Dialog)
                     .setTitle("Установка даты начала")
                     .setMessage("Установите дату начала воздержания.")
                     .setPositiveButton("Установить", (dialog, which) -> setStartDate())
                     .setNeutralButton("Установить сегодняшний день", (dialog, which) -> currentDate())
                     .setCancelable(false)
                     .create();
+            alrt.show();
 
-        }else{
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder
-                    .setTitle("Установка даты начала")
-                    .setMessage("Установите дату начала воздержания.")
-                    .setPositiveButton("Установить", (dialog, which) -> setStartDate())
-                    .setNeutralButton("Установить сегодняшний день", (dialog, which) -> currentDate())
-                    .setCancelable(false)
-                    .create().show();
 
-        }
 
 
     }
 
     public void updateDays(){
-        sPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        sPref = getActivity().getSharedPreferences("Global",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sPref.edit();
         long starttimeinmills = sPref.getLong(START_DATE, 0);
 
         if(starttimeinmills == 0){
             daysCount = 0.1f;
-            createDialog(3);
+            editor.putLong(START_DATE, 1);
+            createDialog();
 
 
         }else{

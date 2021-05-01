@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <color name="primary">#2196F3</color>
+    <color name="primary_dark">#1976D2</color>
+    <color name="primary_light">#BBDEFB</color>
+    <color name="accent">#607D8B</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -8,9 +16,18 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main_color">#BFDCF8</color>
-    <color name="bottom_navigation_item_background_colors">#000000</color>
     <color name="targetPBcolor">#4DE847</color>
     <color name="targetPBcolornight">#E61515</color>
     <color name="recordPBcolor">#0079FB</color>
-    <color name="recordPBcolornight">#121AB8</color>
+    <color name="recordPBcolornight">#0079FB</color>
+
+    <!-- Date Picker Colors -->
+    <color name="calendar_selected_day_bg">#F5FFE400</color>
+    <color name="calendar_selected_range_bg">#8BC34A</color>
+
+
+    <color name="calendar_unavailable_bg">#FD2E2E</color>
+    <color name="calendar_range_middle_unavailable_bg">#F44336</color>
+
 </resources>
+

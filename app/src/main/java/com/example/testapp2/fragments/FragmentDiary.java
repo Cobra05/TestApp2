@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.testapp2.R;
 import com.example.testapp2.adapters.NotesAdapter;
@@ -19,6 +20,7 @@ import com.example.testapp2.list_item.Notes;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Objects;
 
 
 public class FragmentDiary extends Fragment {
@@ -45,7 +47,7 @@ public class FragmentDiary extends Fragment {
     public void addNewNote(View view){
         SQLiteDatabase db = getActivity().openOrCreateDatabase("main.db", Context.MODE_PRIVATE, null);
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.Dialog);
         builder.setTitle("Новая Заметка");
 
         final EditText edt = new EditText(getActivity());
@@ -53,13 +55,15 @@ public class FragmentDiary extends Fragment {
 
         builder.setPositiveButton("Добавить", (dialog, which) ->{
             String note = String.valueOf(edt.getText());
-            Calendar cal = Calendar.getInstance();
-            notes.add(new Notes(String.valueOf(cal.getTime()), note));
-            ContentValues cv = new ContentValues();
-            cv.put("date", String.valueOf(cal.getTime()));
-            cv.put("note", note);
-            db.insert("notes", null, cv);
-
+            if (Objects.equals(note, ""))
+                Toast.makeText(getActivity(), "Вы ничего не ввели!", Toast.LENGTH_SHORT).show();
+            else {
+                Calendar cal = Calendar.getInstance();
+                notes.add(new Notes(String.valueOf(cal.getTime()), note));
+                ContentValues cv = new ContentValues();
+                cv.put("date", String.valueOf(cal.getTime()));
+                cv.put("note", note);
+                db.insert("notes", null, cv); }
         })
                 .setNegativeButton("Отмена", null);
         builder.create().show();

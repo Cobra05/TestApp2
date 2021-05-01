@@ -53,7 +53,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        app:cpb_background_progressbar_color="#720079FB"
+        app:cpb_background_progressbar_color="#5B3589E4"
         app:cpb_background_progressbar_width="30dp"
         app:cpb_progress="1"
         app:cpb_progress_direction="to_right"
@@ -93,7 +93,7 @@
         android:layout_marginStart="85dp"
         android:layout_marginTop="143dp"
         android:layout_marginEnd="85dp"
-        android:textColor="@color/black"
+
         android:textSize="40sp"
         tools:text="@string/dayscounter"
         android:gravity="center">
@@ -101,6 +101,7 @@
     </TextView>
 
     <TextClock
+        android:textColor="@color/primary"
         android:id="@+id/textClock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -144,7 +145,7 @@
         android:layout_marginTop="0dp"
         android:layout_marginEnd="80dp"
         android:gravity="center"
-        tools:text="Рекорд: Нажмите чтобы установить"
+        android:text="Рекорд: Нажмите чтобы установить"
         android:textColor="?attr/haloColor"
         android:textSize="20sp"
 
@@ -165,7 +166,6 @@
         android:gravity="center"
         android:onClick="updateCitate"
         android:text="@string/cit3"
-        android:textColor="@color/black"
         android:textSize="17sp" />
 
     <ImageView
@@ -176,7 +176,9 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="15dp"
-        android:src="@drawable/alarm" />
+        android:src="@drawable/alarm"
+        app:tint="#00000000"
+        android:tintMode="src_over"/>
 
 
 </RelativeLayout>
