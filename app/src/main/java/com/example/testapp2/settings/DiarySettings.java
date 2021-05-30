@@ -9,9 +9,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.testapp2.R;
-import com.github.omadahealth.lollipin.lib.PinActivity;
 
-public class DiarySettings extends PinActivity {
+public class DiarySettings extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

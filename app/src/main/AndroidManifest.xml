@@ -12,10 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/LightTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".settings.DiarySettings"></activity>
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".settings.SecirutySettings" />
+        <activity android:name=".PinActivity" />
+        <activity android:name=".settings.DiarySettings" />
         <activity android:name=".settings.CalendarSettings" />
-        <activity android:name=".settings.CounterActivity" />
-        <activity android:name=".settings.ThemeSelectActivity" />
+        <activity android:name=".settings.CounterSettings" />
+        <activity android:name=".settings.ThemesSettings" />
         <activity android:name=".InformActivity" />
         <activity android:name=".MethodsActivity" />
         <activity android:name=".WebView" />
@@ -23,7 +32,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>

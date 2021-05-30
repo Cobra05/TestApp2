@@ -18,10 +18,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.view.View;
 
+import com.example.testapp2.PinActivity;
 import com.example.testapp2.R;
 import com.example.testapp2.list_item.Notes;
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
@@ -104,6 +106,12 @@ public class FragmentCounter extends Fragment {
                     .setNegativeButton("Отмена", null);
             builder.create().show();
         });
+
+        ImageView view2 = view.findViewById(R.id.imageView);
+        view2.setOnClickListener((v -> {
+            Intent intent = new Intent(getActivity(), PinActivity.class);
+            startActivity(intent);
+        }));
 
 
         return view;

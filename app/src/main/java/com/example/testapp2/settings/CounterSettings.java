@@ -15,7 +15,7 @@ import com.example.testapp2.R;
 import java.util.Calendar;
 
 
-public class CounterActivity extends AppCompatActivity {
+public class CounterSettings extends AppCompatActivity {
 
     SharedPreferences sPref;
     final String START_DATE = "Start date";

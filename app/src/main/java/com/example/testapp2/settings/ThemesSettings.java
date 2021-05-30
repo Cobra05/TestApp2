@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 import io.ghyeok.stickyswitch.widget.StickySwitch;
 
-public class ThemeSelectActivity extends AppCompatActivity {
+public class ThemesSettings extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

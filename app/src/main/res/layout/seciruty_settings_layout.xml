@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".settings.SecirutySettings">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="?attr/colorOnSecondary"
+        app:titleTextColor="@color/white"
+        app:title="Настройки Счётчика"
+
+        />
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/toolbar"
+        android:text="Включить PIN-код:"
+        android:textSize="20sp" />
+
+
+    <io.ghyeok.stickyswitch.widget.StickySwitch
+        android:id="@+id/pin_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text1"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="23dp"
+        app:ss_iconPadding="10dp"
+        app:ss_leftText="Выкл."
+        app:ss_rightText="Вкл."
+        app:ss_textColor="@color/primary_dark"
+        app:ss_rightIcon="@drawable/locked_ico"
+        app:ss_leftIcon="@drawable/locked_no_ico"
+        app:ss_textSize="12dp"
+        app:ss_sliderBackgroundColor="#7EDEF6"
+
+
+        />
+
+    <Button
+        android:id="@+id/btn1"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pin_switch"
+        android:layout_marginTop="21dp"
+        android:text="Изменить PIN-код"
+        android:textColor="@color/primary_dark" />
+
+</RelativeLayout>

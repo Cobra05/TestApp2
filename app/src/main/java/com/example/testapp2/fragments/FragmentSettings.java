@@ -12,9 +12,10 @@ import android.view.ViewGroup;
 
 import com.example.testapp2.R;
 import com.example.testapp2.settings.CalendarSettings;
-import com.example.testapp2.settings.CounterActivity;
+import com.example.testapp2.settings.CounterSettings;
 import com.example.testapp2.settings.DiarySettings;
-import com.example.testapp2.settings.ThemeSelectActivity;
+import com.example.testapp2.settings.SecirutySettings;
+import com.example.testapp2.settings.ThemesSettings;
 
 
 public class FragmentSettings extends Fragment {
@@ -29,6 +30,7 @@ public class FragmentSettings extends Fragment {
         Toolbar counterLabel = view.findViewById(R.id.toolbar2);
         Toolbar calendarLabel = view.findViewById(R.id.toolbar3);
         Toolbar diaryLabel = view.findViewById(R.id.toolbar4);
+        Toolbar securityLabel = view.findViewById(R.id.toolbar5);
 
         themeLabel.setOnClickListener(v -> {
             themes();
@@ -42,16 +44,19 @@ public class FragmentSettings extends Fragment {
         diaryLabel.setOnClickListener((v -> {
             diary();
         }));
+        securityLabel.setOnClickListener((v -> {
+            security();
+        }));
 
         return view;
     }
 
     public void themes(){
-         Intent intent = new Intent(getActivity(), ThemeSelectActivity.class);
+         Intent intent = new Intent(getActivity(), ThemesSettings.class);
          startActivity(intent);
     }
     public void counter(){
-        Intent intent = new Intent(getActivity(), CounterActivity.class);
+        Intent intent = new Intent(getActivity(), CounterSettings.class);
         startActivity(intent);
     }
     public void calendar(){
@@ -61,6 +66,10 @@ public class FragmentSettings extends Fragment {
 
     public void diary(){
         Intent intent = new Intent(getActivity(), DiarySettings.class);
+        startActivity(intent);
+    }
+    public void security(){
+        Intent intent = new Intent(getActivity(), SecirutySettings.class);
         startActivity(intent);
     }
 }

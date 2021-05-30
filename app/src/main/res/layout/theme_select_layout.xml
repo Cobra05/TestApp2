@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".settings.ThemeSelectActivity"
+    tools:context=".settings.ThemesSettings"
     android:orientation="vertical"
     android:background="?backgroundColor">
 
@@ -62,7 +62,8 @@
             app:ss_iconSize="18dp"
             app:ss_leftIcon="@drawable/day_icon"
             app:ss_rightIcon="@drawable/night_icon"
-            app:ss_sliderBackgroundColor="#7EDEF6" />
+            app:ss_sliderBackgroundColor="#7EDEF6"
+            />
 
         <TextView
             android:id="@+id/night"

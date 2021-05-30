@@ -15,9 +15,6 @@ import com.example.testapp2.fragments.FragmentCounter;
 import com.example.testapp2.fragments.FragmentDiary;
 import com.example.testapp2.fragments.FragmentSettings;
 import com.example.testapp2.fragments.FragmentInformation;
-import com.example.testapp2.settings.CustomPinActivity;
-import com.github.omadahealth.lollipin.lib.managers.AppLock;
-import com.github.omadahealth.lollipin.lib.managers.LockManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
@@ -69,12 +66,5 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView navigation = findViewById(R.id.navbar);
         navigation.setOnNavigationItemSelectedListener(mlistener);
-
-        LockManager<CustomPinActivity> lockManager = LockManager.getInstance();
-        lockManager.enableAppLock(this, CustomPinActivity.class);
-
-        Intent intent = new Intent(MainActivity.this, CustomPinActivity.class);
-        intent.putExtra(AppLock.EXTRA_TYPE, AppLock.ENABLE_PINLOCK);
-        startActivityForResult(intent, REQUEST_CODE_ENABLE);
     }
 }
