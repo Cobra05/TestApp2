@@ -1,5 +1,6 @@
 package com.example.testapp2.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -52,8 +53,9 @@ public class FragmentSettings extends Fragment {
     }
 
     public void themes(){
-         Intent intent = new Intent(getActivity(), ThemesSettings.class);
-         startActivity(intent);
+        Intent intent = new Intent(getActivity(), ThemesSettings.class);
+        startActivity(intent);
+        getActivity().finish();
     }
     public void counter(){
         Intent intent = new Intent(getActivity(), CounterSettings.class);

@@ -46,7 +46,7 @@ public class FragmentCalendar extends Fragment {
 
 
 
-        SharedPreferences spref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences spref = getActivity().getSharedPreferences("Global", Context.MODE_PRIVATE);
 
         //get start of data vozderjaniya and current date to set on range picker and get all days between
         Calendar start = Calendar.getInstance();

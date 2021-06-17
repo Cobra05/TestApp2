@@ -37,12 +37,12 @@ public class ThemesSettings extends AppCompatActivity {
         switcher.setOnSelectedChangeListener((direction, s) -> {
             if (direction == StickySwitch.Direction.LEFT){
                 sPref.edit().putInt("theme", 0).apply();
-                finish();
                 startActivity(getIntent());
+                finish();
             }else if(direction == StickySwitch.Direction.RIGHT){
                 sPref.edit().putInt("theme", 1).apply();
-                finish();
                 startActivity(getIntent());
+                finish();
             }
 
         });

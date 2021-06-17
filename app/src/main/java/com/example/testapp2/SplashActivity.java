@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
+
+import java.util.Objects;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -18,12 +21,30 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         makeFullScreen();
         setContentView(R.layout.splash_layout);
+        SharedPreferences sprf = getSharedPreferences("Global", MODE_PRIVATE);
+        String pin_state = sprf.getString("Pin", "DEFAULT");
 
         Intent inte = new Intent(this, PinActivity.class);
         new Handler().postDelayed(() -> {
-            startActivity(inte);
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            finish();
+
+            switch (pin_state){
+                case "DEFAULT":
+                    sprf.edit().putString("Pin", "OFF");
+                    startActivity(new Intent(this, MainActivity.class));
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                    finish();
+                    break;
+                case "ON":
+                    startActivity(inte);
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                    finish();
+                    break;
+                case "OFF":
+                    startActivity(new Intent(this, MainActivity.class));
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                    finish();
+                    break;
+            }
         },2000);
 
 
