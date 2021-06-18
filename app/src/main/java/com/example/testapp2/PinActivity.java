@@ -23,12 +23,13 @@ public class PinActivity extends AppCompatActivity {
         else if(theme == 1)
             setTheme(R.style.NightTheme);
         setContentView(R.layout.pin_layout);
+        String pin_code = sPref.getString("Pin-code", "1111");
 
         PinLockView mPinLockView = (PinLockView) findViewById(R.id.pin_lock_view);
         PinLockListener mPinLockListener = new PinLockListener() {
             @Override
             public void onComplete(String pin) {
-                if (pin.equals("1111")){
+                if (pin.equals(pin_code)){
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     finish();
                     startActivity(intent);

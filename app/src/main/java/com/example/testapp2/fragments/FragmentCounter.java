@@ -85,6 +85,8 @@ public class FragmentCounter extends Fragment {
         citlab.setOnClickListener(this::updateCitate);
 
         TextView record = view.findViewById(R.id.recDays);
+
+        // to change record days quantity
         record.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.Dialog);
             builder.setTitle("Установите рекорд");
@@ -106,13 +108,6 @@ public class FragmentCounter extends Fragment {
                     .setNegativeButton("Отмена", null);
             builder.create().show();
         });
-
-        ImageView view2 = view.findViewById(R.id.imageView);
-        view2.setOnClickListener((v -> {
-            Intent intent = new Intent(getActivity(), PinActivity.class);
-            startActivity(intent);
-        }));
-
 
         return view;
     }

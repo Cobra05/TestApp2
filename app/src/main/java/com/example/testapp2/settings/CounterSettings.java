@@ -24,6 +24,12 @@ public class CounterSettings extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences sPref = getSharedPreferences("Global" ,MODE_PRIVATE);
+        int theme = sPref.getInt("theme", 0);
+        if (theme == 0)
+            setTheme(R.style.LightTheme);
+        else if(theme == 1)
+            setTheme(R.style.NightTheme);
         setContentView(R.layout.layout_counter);
 
         Button btn1 = findViewById(R.id.btn1);
@@ -32,7 +38,7 @@ public class CounterSettings extends AppCompatActivity {
             setStartDate();
         });
         btn2.setOnClickListener(v -> {
-            AlertDialog alrt = new AlertDialog.Builder(this)
+            AlertDialog alrt = new AlertDialog.Builder(this, R.style.Dialog)
                     .setTitle("Уведомление")
                     .setMessage("Сросить счётчик?")
                     .setPositiveButton("Да", (dialog, which) -> currentDate())

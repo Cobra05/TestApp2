@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/backgroundColor"
     tools:context=".settings.SecirutySettings">
 
     <androidx.appcompat.widget.Toolbar
@@ -54,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/pin_switch"
         android:layout_marginTop="21dp"
-        android:text="Изменить PIN-код"
+        android:text="Установить/Изменить PIN-код"
         android:textColor="@color/primary_dark" />
 
 </RelativeLayout>
