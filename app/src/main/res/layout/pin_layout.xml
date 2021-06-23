@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorSecondaryVariant"
-    tools:context="com.example.testapp2.PinActivity">
+    tools:context="com.example.protivo.PinActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/profile_image"

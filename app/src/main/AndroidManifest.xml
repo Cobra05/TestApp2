@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.testapp2">
+    package="com.example.protivo">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_icon_round"
         android:supportsRtl="true"
         android:theme="@style/LightTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SplashActivity">
+        <activity android:name="com.example.protivo.settings.AboutProgramm"></activity>
+        <activity android:name="com.example.protivo.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".settings.SecirutySettings" />
-        <activity android:name=".PinActivity" />
-        <activity android:name=".settings.DiarySettings" />
-        <activity android:name=".settings.CalendarSettings" />
-        <activity android:name=".settings.CounterSettings" />
-        <activity android:name=".settings.ThemesSettings" />
-        <activity android:name=".InformActivity" />
-        <activity android:name=".MethodsActivity" />
-        <activity android:name=".WebView" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.protivo.settings.SecirutySettings" />
+        <activity android:name="com.example.protivo.PinActivity" />
+        <activity android:name="com.example.protivo.settings.DiarySettings" />
+        <activity android:name="com.example.protivo.settings.CalendarSettings" />
+        <activity android:name="com.example.protivo.settings.CounterSettings" />
+        <activity android:name="com.example.protivo.settings.ThemesSettings" />
+        <activity android:name="com.example.protivo.InformActivity" />
+        <activity android:name="com.example.protivo.MethodsActivity" />
+        <activity android:name="com.example.protivo.WebView" />
+        <activity android:name="com.example.protivo.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

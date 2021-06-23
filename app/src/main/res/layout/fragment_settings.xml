@@ -146,5 +146,29 @@
         app:subtitle="Установить защитный пароль"
         app:title="Пароль"/>
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/about_programm_ico"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/about_ico"
+        app:tint="#00000000"
+        app:tintMode="add" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/about_programm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toEndOf="@+id/themeico"
+        android:background="?attr/backgroundColor"
+        app:title="О Программе" />
+
 
 </RelativeLayout>
